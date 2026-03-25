@@ -28,7 +28,7 @@ function ProductFilter() {
             })
           .catch(err => console.log(err))
           }
-    }, [getProducts])
+    }, [getProducts, setGetProducts])
 
     useEffect(() => {
         API.get("products/api/categories/")
@@ -134,21 +134,21 @@ function ProductFilter() {
                   <img src={`http://127.0.0.1:8000/media/products/${prd.image[0]}`} alt="" />
                   <h2>${prd.price}</h2>
                   <p>{prd.productname}</p>
-                  <a onClick={handleAddToCart} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</a>
+                  <button onClick={handleAddToCart} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
                 </div>
                 <div className="product-overlay">
                   <div className="overlay-content">
-                    <a href={`/product_detail/${prd.id}`} className="btn btn-default prd_detail">Detail</a>
+                    <button href={`/product_detail/${prd.id}`} className="btn btn-default prd_detail">Detail</button>
                     <h2>${prd.price}</h2>
                     <p>{prd.productname}</p>
-                    <a onClick={handleAddToCart} id={prd.id} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</a>
+                    <button onClick={handleAddToCart} id={prd.id} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
                   </div>
                 </div>
               </div>
               <div className="choose">
                 <ul className="nav nav-pills nav-justified">
-                  <li><a onClick={handleWishList} id={prd.id}><i className="fa fa-plus-square" />Add to wishlist</a></li>
-                  <li><a><i className="fa fa-plus-square" />Add to compare</a></li>
+                  <li><button onClick={handleWishList} id={prd.id}><i className="fa fa-plus-square" />Add to wishlist</button></li>
+                  <li><button><i className="fa fa-plus-square" />Add to compare</button></li>
                 </ul>
               </div>
             </div>

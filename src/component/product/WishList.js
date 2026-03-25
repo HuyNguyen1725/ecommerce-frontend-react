@@ -5,10 +5,8 @@ import { useDispatch } from "react-redux"
 import API from "../../API"
 
 function Wishlist() {
-  const wishListLocal = localStorage.getItem("wishlist")
-  let wishListLc = JSON.parse(wishListLocal) || []
-  const userCartLocal = localStorage.getItem("user_cart")
-  let userCartLc = JSON.parse(userCartLocal) || {}
+  let wishListLc = JSON.parse(localStorage.getItem("wishlist")) || []
+  let userCartLc = JSON.parse(localStorage.getItem("user_cart")) || {}
   const { setGetCart, setGetWishList } = useContext(UserContext)
 
   const dispatch = useDispatch()
@@ -17,6 +15,7 @@ function Wishlist() {
   let newWishList = [...wishlist]
 
   useEffect(() => {
+    const wishListLc = JSON.parse(localStorage.getItem("wishlist")) || []
     API.post("products/api/wishlists/products/", wishListLc)
     .then(res => { 
       console.log(res.data)

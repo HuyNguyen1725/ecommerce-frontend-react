@@ -60,7 +60,7 @@ function ProductDetail() {
             console.log(res.data)
         })
         .catch(err => console.log(err.response.data))
-    }, [])
+    }, [product_id])
 
     return (
         
@@ -69,7 +69,7 @@ function ProductDetail() {
         <div className="product-details">
           <div className="col-sm-5">
             <div className="view-product">
-              <img src={`http://127.0.0.1:8000/media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} alt="" />
+              <img src={`http://127.0.0.1:8000/media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} alt="product" />
               <a href={`http://127.0.0.1:8000/media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} rel="prettyPhoto"><h3>ZOOM</h3></a>
             </div>
                 <Carousel
@@ -82,22 +82,22 @@ function ProductDetail() {
                 itemClass="carousel-item-padding-40-px"
                 >
                 <div className="item active">
-                  <a href><img style={{width: "100px"}} src={`http://127.0.0.1:8000/media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[1] : null}`} alt="" /></a>
+                  <img style={{width: "100px"}} src={`http://127.0.0.1:8000/media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[1] : null}`} alt="product" />
                 </div>
                 <div className="item">
-                  <a href><img  style={{width: "100px"}} src={`http://127.0.0.1:8000/media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[2] : null}`} /></a>
+                  <img  style={{width: "100px"}} src={`http://127.0.0.1:8000/media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[2] : null}`} alt="product"/>
                 </div>
                 <div className="item">
-                  <a href><img style={{width: "100px"}} src={`http://127.0.0.1:8000/media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} alt="" /></a>
+                  <img style={{width: "100px"}} src={`http://127.0.0.1:8000/media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} alt="product" />
                 </div>
                 </Carousel>
           </div>
           <div className="col-sm-7">
             <div className="product-information">
-              <img src="images/product-details/new.jpg" className="newarrival" alt="" />
+              <img src="images/product-details/new.jpg" className="newarrival" alt="product" />
               <h2>{getProduct.productname}</h2>
               <p>Web ID: {getProduct.id}</p>
-              <img src="images/product-details/rating.png" alt="" />
+              <img src="images/product-details/rating.png" alt="product" />
               <span>
                 <span>US ${getProduct.price}</span>
                 <label>Quantity:</label>
@@ -110,7 +110,7 @@ function ProductDetail() {
               <p><b>Availability:</b> In Stock</p>
               <p><b>Condition:</b> New</p>
               <p><b>Brand:</b> E-SHOPPER</p>
-              <a href><img src="images/product-details/share.png" className="share img-responsive" alt="" /></a>
+              <img src="images/product-details/share.png" className="share img-responsive" alt="product" />
             </div>
           </div>
         </div>
