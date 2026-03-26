@@ -172,7 +172,7 @@ function EditProduct() {
         if(Object.keys(productEdit).length > 0) {
             return productEdit["image"].map(img => 
             <div className="me-2">
-                <img className="mb-2" style={{width: "50px"}} src={`http://127.0.0.1:8000/media/products/${img}`}/>
+                <img className="mb-2" style={{width: "50px"}} src={`${API}media/products/${img}`}/>
                 <input onChange={handleCheckbox} className="form-check-input" id={img} type="checkbox"/>
             </div>
         )

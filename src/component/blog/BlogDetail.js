@@ -40,7 +40,7 @@ function BlogDetail() {
 								</span> */}
             </div>
             <a href>
-              <img src={`http://127.0.0.1:8000${blogDetail.image}`} alt="" />
+              <img src={`${API}${blogDetail.image}`} alt="" />
             </a>
             <p>
               {blogDetail.content}

@@ -1,3 +1,4 @@
+import shipping from "../../images/home/shipping.jpg"
 import { useEffect, useState, useContext } from "react"
 import API from "../../API"
 import Slider from "rc-slider";
@@ -123,7 +124,7 @@ function MenuLeft() {
         </div>
         </div>{/*/price-range*/}
         <div className="shipping text-center">{/*shipping*/}
-          <img src="images/home/shipping.jpg" alt="" />
+          <img src={shipping} alt="" />
         </div>{/*/shipping*/}
       </div>
     </div>

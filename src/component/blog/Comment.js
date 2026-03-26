@@ -97,7 +97,7 @@ function Comment() {
             {comments.map(cmt => 
               <li className="media">
               <a className="pull-left">
-                <img className="media-object" src={`http://127.0.0.1:8000${cmt.user_image}`} alt="" />
+                <img className="media-object" src={`${API}${cmt.user_image}`} alt="" />
               </a>
               <div className="media-body">
                 <ul className="sinlge-post-meta">
@@ -112,7 +112,7 @@ function Comment() {
                 if(replCmt.comment_id == cmt.id) {
                   return <li className="media second-media">
                   <a className="pull-left">
-                  <img className="media-object" src={`http://127.0.0.1:8000${replCmt.user_image}`} alt="" />
+                  <img className="media-object" src={`${API}${replCmt.user_image}`} alt="" />
                   </a>
                   <div className="media-body">
                   <ul className="sinlge-post-meta">

@@ -106,7 +106,7 @@ function Cart() {
                   {userCart.map(prd => 
                     <tr>
                     <td className="cart_product">
-                      <a href><img src={`http://127.0.0.1:8000/media/products/${prd.image[0]}`} alt="" /></a>
+                      <a href><img src={`${API}media/products/${prd.image[0]}`} alt="" /></a>
                     </td>
                     <td className="cart_description">
                       <h4><a href>{prd.productname}</a></h4>
