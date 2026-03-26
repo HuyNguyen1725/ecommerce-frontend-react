@@ -41,9 +41,9 @@ function Wishlist() {
 
   function handleDeleteWishList(e) {
     const prd_id = e.target.id
-    newWishList = newWishList.filter(prd => prd.id != prd_id)
+    newWishList = newWishList.filter(prd => Number(prd.id) !== Number(prd_id))
     setWishlist(newWishList)
-    wishListLc = wishListLc.filter(prdId => prdId != prd_id)
+    wishListLc = wishListLc.filter(prdId => Number(prdId) !== Number(prd_id))
     localStorage.setItem("wishlist", JSON.stringify(wishListLc))
     setGetWishList(wishListLc.length)
   }
@@ -84,10 +84,10 @@ function Wishlist() {
                       <p>${prd.price}</p>
                     </td>
                     <td className="wishlist_addToCart">
-                      <a onClick={handleAddToCart} id={prd.id} className="btn btn-primary wishlist-add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</a>
+                      <button onClick={handleAddToCart} id={prd.id} className="btn btn-primary wishlist-add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
                     </td>
                     <td className="wishlist_delete">
-                      <a onClick={handleDeleteWishList} id={prd.id} className="wishlist_quantity_delete"><i id={prd.id} className="fa fa-times" /></a>
+                      <button onClick={handleDeleteWishList} id={prd.id} className="wishlist_quantity_delete"><i id={prd.id} className="fa fa-times" /></button>
                     </td>
                   </tr>
                   )}

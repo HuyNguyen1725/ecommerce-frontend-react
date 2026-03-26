@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import API from "../../API"
 
 function Blog() {
-  const [pageCount, setPageCount] = useState(0)
   const [blogList, setBlogList] = useState([])
   const [page, setPage] = useState(1);
   const [next, setNext] = useState(null);
@@ -14,7 +13,6 @@ function Blog() {
         setBlogList(res.data.results)
         setNext(res.data.next)
         setPrevious(res.data.previous)
-        setPageCount(res.data)
         console.log(res.data)
       })
       .catch((err) => console.log(err.response.data))

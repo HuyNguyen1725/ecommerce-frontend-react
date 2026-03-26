@@ -20,56 +20,56 @@ function Footer() {
               <div className="col-sm-7">
                 <div className="col-sm-3">
                   <div className="video-gallery text-center">
-                    <a href="#">
+                    <button>
                       <div className="iframe-img">
                         <img src={iframe1} alt="" />
                       </div>
                       <div className="overlay-icon">
                         <i className="fa fa-play-circle-o" />
                       </div>
-                    </a>
+                    </button>
                     <p>Circle of Hands</p>
                     <h2>24 DEC 2014</h2>
                   </div>
                 </div>
                 <div className="col-sm-3">
                   <div className="video-gallery text-center">
-                    <a href="#">
+                    <button>
                       <div className="iframe-img">
                         <img src={iframe2} alt="" />
                       </div>
                       <div className="overlay-icon">
                         <i className="fa fa-play-circle-o" />
                       </div>
-                    </a>
+                    </button>
                     <p>Circle of Hands</p>
                     <h2>24 DEC 2014</h2>
                   </div>
                 </div>
                 <div className="col-sm-3">
                   <div className="video-gallery text-center">
-                    <a href="#">
+                    <button>
                       <div className="iframe-img">
                         <img src={iframe3} alt="" />
                       </div>
                       <div className="overlay-icon">
                         <i className="fa fa-play-circle-o" />
                       </div>
-                    </a>
+                    </button>
                     <p>Circle of Hands</p>
                     <h2>24 DEC 2014</h2>
                   </div>
                 </div>
                 <div className="col-sm-3">
                   <div className="video-gallery text-center">
-                    <a href="#">
+                    <button>
                       <div className="iframe-img">
                         <img src={iframe4} alt="" />
                       </div>
                       <div className="overlay-icon">
                         <i className="fa fa-play-circle-o" />
                       </div>
-                    </a>
+                    </button>
                     <p>Circle of Hands</p>
                     <h2>24 DEC 2014</h2>
                   </div>
@@ -152,7 +152,7 @@ function Footer() {
           <div className="container">
             <div className="row">
               <p className="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-              <p className="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+              <p className="pull-right">Designed by <span><a target="_blank" rel="noreferrer" href="http://www.themeum.com">Themeum</a></span></p>
             </div>
           </div>
         </div>

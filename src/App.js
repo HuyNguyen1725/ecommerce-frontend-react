@@ -28,8 +28,6 @@ import {
 
 function App() {
     let params1 = useLocation()
-    const userLocal = localStorage.getItem("user")
-    const user = JSON.parse(userLocal) || {}
     const [getCart, setGetCart] = useState(0)
     const [getWishList, setGetWishList] = useState(0)
     const [priceRange, setPriceRange] = useState([0, 1000])

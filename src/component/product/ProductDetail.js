@@ -8,7 +8,6 @@ import { UserContext } from "../../UserContext"
 import "react-multi-carousel/lib/styles.css"
 
 function ProductDetail() {
-    let user = JSON.parse(localStorage.getItem("user")) || {}
     let user_cart = JSON.parse(localStorage.getItem("user_cart")) || {}
 
     const dispatch = useDispatch()

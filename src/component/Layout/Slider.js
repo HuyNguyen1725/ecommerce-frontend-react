@@ -1,4 +1,3 @@
-import Carousel from "react-bootstrap/Carousel";
 import girl1 from "../../images/home/girl1.jpg"
 import girl2 from "../../images/home/girl2.jpg"
 import girl3 from "../../images/home/girl3.jpg"

@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux"
 import { totalCheckoutCount } from "../counterSlice"
 
 function Home() {
-  let user = JSON.parse(localStorage.getItem("user")) || {}
   let userCartLc = JSON.parse(localStorage.getItem("user_cart")) || {}
   let wishListLc = JSON.parse(localStorage.getItem("wishlist")) || []
 
@@ -33,7 +32,7 @@ function Home() {
   }, [])
 
   useEffect(() => {
-    if(priceRange[0] >= 0 && priceRange[1] != 1000) {
+    if(priceRange[0] >= 0 && priceRange[1] !== 1000) {
       API.get(`products/api/products/?min_price=${priceRange[0]}&max_price=${priceRange[1]}`)
       .then(res => {
         console.log(res.data, " getProduct")
@@ -87,21 +86,21 @@ function Home() {
                   <img src={`http://127.0.0.1:8000/media/products/${prd.image[0]}`} alt="" />
                   <h2>${prd.price}</h2>
                   <p>{prd.productname}</p>
-                  <a onClick={handleAddToCart} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</a>
+                  <button onClick={handleAddToCart} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
                 </div>
                 <div className="product-overlay">
                   <div className="overlay-content">
                     <a href={`/product_detail/${prd.id}`} className="btn btn-default prd_detail">Detail</a>
                     <h2>${prd.price}</h2>
                     <p>{prd.productname}</p>
-                    <a onClick={handleAddToCart} id={prd.id} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</a>
+                    <button onClick={handleAddToCart} id={prd.id} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
                   </div>
                 </div>
               </div>
               <div className="choose">
                 <ul className="nav nav-pills nav-justified">
-                  <li><a onClick={handleWishList} id={prd.id}><i className="fa fa-plus-square" />Add to wishlist</a></li>
-                  <li><a><i className="fa fa-plus-square" />Add to compare</a></li>
+                  <li><button onClick={handleWishList} id={prd.id}><i className="fa fa-plus-square" />Add to wishlist</button></li>
+                  <li><button><i className="fa fa-plus-square" />Add to compare</button></li>
                 </ul>
               </div>
             </div>
@@ -113,13 +112,13 @@ function Home() {
           <div className="col-sm-12">
             <ul className="nav nav-tabs">
               {categoryProduct.map((cgr, idx) => 
-                <li key={idx} className={idx == 0 ? "active" : ""}><a href={`#${cgr.id}-tab`} data-toggle="tab">{cgr.name}</a></li>
+                <li key={idx} className={idx === 0 ? "active" : ""}><a href={`#${cgr.id}-tab`} data-toggle="tab">{cgr.name}</a></li>
               )}
             </ul>
           </div>
           <div className="tab-content">
             {categoryProduct.map((cgrprd, index) =>
-                <div key={index} className={`tab-pane fade ${index == 0 ? "active in" : ""}`} id={`${cgrprd.id}-tab`}>
+                <div key={index} className={`tab-pane fade ${index === 0 ? "active in" : ""}`} id={`${cgrprd.id}-tab`}>
                   {cgrprd.products.map(prds =>
                     <div className="col-sm-3">
                       <div className="product-image-wrapper">
@@ -128,7 +127,7 @@ function Home() {
                           <img src={`http://127.0.0.1:8000/media/products/${prds.image[0]}`} alt="" />
                           <h2>${prds.price}</h2>
                           <p>{prds.productname}</p>
-                          <a href="#" className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</a>
+                          <button className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
                           </div>
                         </div>
                       </div>
@@ -157,7 +156,7 @@ function Home() {
                       </div>
                     </div>
                   </div>
-                  }
+                  } else return null
                 })}
               </div>
               <div className="item">	
@@ -170,12 +169,12 @@ function Home() {
                         <img src={`http://127.0.0.1:8000/media/products/${prd.image[0]}`} alt="" />
                         <h2>${prd.price}</h2>
                         <p>{prd.name}</p>
-                        <a onClick={handleAddToCart} id={prd.id} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</a>
+                        <button onClick={handleAddToCart} id={prd.id} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
                       </div>
                     </div>
                   </div>
                 </div>
-                  }
+                  } else return null
                 })}
               </div>
             </div>

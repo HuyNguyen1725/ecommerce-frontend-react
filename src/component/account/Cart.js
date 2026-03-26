@@ -3,12 +3,10 @@ import API from "../../API"
 import { UserContext } from "../../UserContext"
 
 function Cart() {
-    const userLocal = localStorage.getItem("user")
-    const user = JSON.parse(userLocal) || {}
     const userCartLocal = localStorage.getItem("user_cart")
     const userCartLc = JSON.parse(userCartLocal)
     
-    const {getCart, setGetCart} = useContext(UserContext)
+    const {setGetCart} = useContext(UserContext)
     const [userCart, setUserCart] = useState([])
     let newUserCart = [...userCart]
 
@@ -20,7 +18,7 @@ function Cart() {
         res.data.map(prd => totalQty += prd.qty)
         setGetCart(totalQty)
       })
-    }, [])
+    }, [setGetCart])
 
     console.log(userCart)
 
@@ -38,8 +36,8 @@ function Cart() {
         localStorage.setItem("user_cart", JSON.stringify(userCartLc))
       }
       newUserCart.map(prd => {
-        if(prd.id == prd_id) {
-          prd.qty += 1
+        if(prd.id === prd_id) {
+          return prd.qty += 1
         }
       })
       setUserCart(newUserCart)

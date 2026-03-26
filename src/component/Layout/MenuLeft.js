@@ -2,12 +2,14 @@ import { useEffect, useState, useContext } from "react"
 import API from "../../API"
 import Slider from "rc-slider";
 import { UserContext } from "../../UserContext";
+import { useNavigate } from "react-router-dom";
 
 function MenuLeft() {
   const [categories, setCategories] = useState([])
   const [brands, setBrands] = useState([])
-  const { priceRange, setPriceRange } = useContext(UserContext)
+  const { priceRange, setPriceRange, setGetProducts } = useContext(UserContext)
 
+  const navigate = useNavigate()
 
   useEffect(() => {
     API.get("products/api/categories/")
@@ -27,6 +29,15 @@ function MenuLeft() {
     .catch(err => console.log(err.response.errors))
   }, [])
 
+  function handleBrandFilter(e) {
+    API.get(`products/api/products/?brand=${e.target.id}`)
+    .then(res => {
+      console.log(res.data.results)
+      setGetProducts(res.data.results)
+    })
+    .catch(err => console.log(err))
+    navigate("/productfilter")
+  }
 
   return (
     <div className="col-sm-3">
@@ -47,7 +58,7 @@ function MenuLeft() {
                 <div id={category.name} className="panel-collapse collapse">
                   <div className="panel-body">
                     <ul>
-                      <li><a href="#">{brand.name} </a></li>
+                      <li key={brand.id}><button id={brand.id} onClick={handleBrandFilter}>{brand.name} </button></li>
                     </ul>
                   </div>
                 </div>

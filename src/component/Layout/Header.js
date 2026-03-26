@@ -17,7 +17,7 @@ function Header() {
   const wishListLocal = localStorage.getItem("wishlist")
   const wishListLc = JSON.parse(wishListLocal) || []
 
-  const { getCart, setGetCart, getWishList, setGetWishList, setGetProducts, getPRoducts } = useContext(UserContext)
+  const { getCart, setGetCart, getWishList, setGetWishList, setGetProducts } = useContext(UserContext)
   const [searchInput, setSearchInput] = useState("")
 
   const navigate = useNavigate()
@@ -26,7 +26,7 @@ function Header() {
 
   useEffect(() => {
     setGetWishList(wishListLc.length)
-  }, [])
+  }, [setGetWishList, wishListLc.length])
 
   useEffect(() => {
     let totalQty = 0
@@ -34,7 +34,7 @@ function Header() {
       totalQty += qty
     })
     setGetCart(totalQty)
-  }, [])
+  }, [setGetCart, userCartLc])
 
   function handleLogout() {
     localStorage.clear()
@@ -151,7 +151,7 @@ function Header() {
                     </li>
                     {Object.keys(user).length === 0 ? 
                       <li><a href="/login"><i className="fa fa-lock" /> Login</a></li> :
-                      <li><a onClick={handleLogout}><i className="fa fa-lock" /> Logout</a></li>
+                      <li><button className="header-logout" onClick={handleLogout}><i className="fa fa-lock" /> Logout</button></li>
                     }
                   </ul>
                 </div>
@@ -174,26 +174,21 @@ function Header() {
                 <div className="mainmenu pull-left">
                   <ul className="nav navbar-nav collapse navbar-collapse">
                     <li><a href="/home">Home</a></li>
-                    <li className="dropdown"><a href="#">Shop<i className="fa fa-angle-down" /></a>
+                    <li className="dropdown"><button href="#">Shop<i className="fa fa-angle-down" /></button>
                       <ul role="menu" className="sub-menu">
                         <li><a href="/productfilter">Products</a></li>
                         <li><a href="/checkout">Checkout</a></li> 
                         <li><a href="/cart">Cart</a></li> 
-                        {Object.keys(user).length === 0 ?
-                        <li><a href="/login" className="active">Login</a></li> :
-                        <li><a onClick={handleLogout} className="active">Logout</a></li> 
-                        }
-                        
                       </ul>
                     </li> 
-                    <li className="dropdown"><a href="#">Blog<i className="fa fa-angle-down" /></a>
+                    <li className="dropdown"><button>Blog<i className="fa fa-angle-down" /></button>
                       <ul role="menu" className="sub-menu">
                         <li><a href="/blog">Blog List</a></li>
-                        <li><a >Blog Single</a></li>
+                        {/* <li><button >Blog Single</button></li> */}
                       </ul>
                     </li> 
-                    <li><a >404</a></li>
-                    <li><a >Contact</a></li>
+                    <li><button >404</button></li>
+                    <li><button >Contact</button></li>
                   </ul>
                 </div>
               </div>

@@ -18,17 +18,20 @@ function ProductFilter() {
     const [getBrand, setGetBrand] = useState([])
     const [categoryChoice, setCategoryChoice] = useState("")
     const [brandChoice, setBrandChoice] = useState("")
+    const [page, setPage] = useState(1);
+    const [next, setNext] = useState(null);
+    const [previous, setPrevious] = useState(null);
 
     useEffect(() => {
-          if(getProducts.length === 0) {
-            API.get("products/api/products/")
+            API.get(`products/api/products/?page=${page}`)
             .then(res => {
             console.log(res.data)
-            setGetProducts(res.data)
+            setGetProducts(res.data.results)
+            setNext(res.data.next)
+            setPrevious(res.data.previous)
             })
           .catch(err => console.log(err))
-          }
-    }, [getProducts, setGetProducts])
+    }, [page])
 
     useEffect(() => {
         API.get("products/api/categories/")
@@ -37,8 +40,6 @@ function ProductFilter() {
         )
         .catch(err => console.log(err))
     }, [])
-
-    console.log(getPrice)
 
     useEffect(() => {
         API.get("products/api/brands/")
@@ -53,7 +54,9 @@ function ProductFilter() {
         API.get(`products/api/products/?productname=${getName}&price=${getPrice}&category=${categoryChoice}&brand=${brandChoice}`)
         .then(res => {
             console.log(res.data)
-            setGetProducts(res.data)
+            setGetProducts(res.data.results)
+            setNext(res.data.next)
+            setPrevious(res.data.previous)
         })
         .catch(err => console.log(err))
     }
@@ -134,7 +137,7 @@ function ProductFilter() {
                   <img src={`http://127.0.0.1:8000/media/products/${prd.image[0]}`} alt="" />
                   <h2>${prd.price}</h2>
                   <p>{prd.productname}</p>
-                  <button onClick={handleAddToCart} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
+                  <button onClick={handleAddToCart} id={prd.id} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
                 </div>
                 <div className="product-overlay">
                   <div className="overlay-content">
@@ -155,6 +158,13 @@ function ProductFilter() {
           </div>
           )}
         </div>
+          <div className="pagination-area">
+            <ul className="pagination">
+              <li><button className="btn btn-default previous" disabled={!previous} onClick={() => setPage(page-1)}>Previous</button></li>
+              <span>{page}</span>
+              <li><button className="btn btn-default next" disabled={!next} onClick={() => setPage(page+1)}>Next</button></li>
+            </ul>
+          </div>
         </div>
     )
 }
