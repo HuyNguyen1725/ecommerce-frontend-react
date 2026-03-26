@@ -40,7 +40,7 @@ function BlogDetail() {
 								</span> */}
             </div>
             <a href>
-              <img src={`${API}${blogDetail.image}`} alt="" />
+              <img src={`${process.env.REACT_APP_API_URL}${blogDetail.image}`} alt="" />
             </a>
             <p>
               {blogDetail.content}

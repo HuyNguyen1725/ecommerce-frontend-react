@@ -68,8 +68,8 @@ function ProductDetail() {
         <div className="product-details">
           <div className="col-sm-5">
             <div className="view-product">
-              <img src={`${API}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} alt="product" />
-              <a href={`${API}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} rel="prettyPhoto"><h3>ZOOM</h3></a>
+              <img src={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} alt="product" />
+              <a href={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} rel="prettyPhoto"><h3>ZOOM</h3></a>
             </div>
                 <Carousel
                 responsive={responsive}
@@ -81,13 +81,13 @@ function ProductDetail() {
                 itemClass="carousel-item-padding-40-px"
                 >
                 <div className="item active">
-                  <img style={{width: "100px"}} src={`${API}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[1] : null}`} alt="product" />
+                  <img style={{width: "100px"}} src={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[1] : null}`} alt="product" />
                 </div>
                 <div className="item">
-                  <img  style={{width: "100px"}} src={`${API}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[2] : null}`} alt="product"/>
+                  <img  style={{width: "100px"}} src={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[2] : null}`} alt="product"/>
                 </div>
                 <div className="item">
-                  <img style={{width: "100px"}} src={`${API}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} alt="product" />
+                  <img style={{width: "100px"}} src={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} alt="product" />
                 </div>
                 </Carousel>
           </div>

@@ -84,7 +84,7 @@ function Home() {
             <div className="product-image-wrapper">
               <div className="single-products">
                 <div className="productinfo text-center">
-                  <img src={`${API}media/products/${prd.image[0]}`} alt="" />
+                  <img src={`${process.env.REACT_APP_API_URL}media/products/${prd.image[0]}`} alt="" />
                   <h2>${prd.price}</h2>
                   <p>{prd.productname}</p>
                   <button onClick={handleAddToCart} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
@@ -125,7 +125,7 @@ function Home() {
                       <div className="product-image-wrapper">
                         <div className="single-products">
                           <div className="productinfo text-center">
-                          <img src={`${API}media/products/${prds.image[0]}`} alt="" />
+                          <img src={`${process.env.REACT_APP_API_URL}media/products/${prds.image[0]}`} alt="" />
                           <h2>${prds.price}</h2>
                           <p>{prds.productname}</p>
                           <button className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
@@ -167,7 +167,7 @@ function Home() {
                   <div className="product-image-wrapper">
                     <div className="single-products">
                       <div className="productinfo text-center">
-                        <img src={`${API}media/products/${prd.image[0]}`} alt="" />
+                        <img src={`${process.env.REACT_APP_API_URL}media/products/${prd.image[0]}`} alt="" />
                         <h2>${prd.price}</h2>
                         <p>{prd.name}</p>
                         <button onClick={handleAddToCart} id={prd.id} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>

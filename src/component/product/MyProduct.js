@@ -65,7 +65,7 @@ function MyProduct() {
               {myProduct.map(obj => 
                 <tr>
                 <td className="cart_product">
-                  <a href><img style={{width: "70px"}} src={`${API}media/products/${obj.image[0]}`} alt="" /></a>
+                  <a href><img style={{width: "70px"}} src={`${process.env.REACT_APP_API_URL}media/products/${obj.image[0]}`} alt="" /></a>
                 </td>
                 <td className="cart_description">
                   <h4><a href>{obj.productname}</a></h4>
