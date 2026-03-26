@@ -212,6 +212,7 @@ function AddProduct() {
                 <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
                     <input value={info.name} onChange={handleInfo} name="name" placeholder="Name"/>
                     <input value={info.price} onChange={handleInfo} name="price" placeholder="Price"/>
+                    <input />
                     <select onChange={handleCategory} value={category}>
                         <option value={[]}>Please choose category</option>
                         {categoryOption()}

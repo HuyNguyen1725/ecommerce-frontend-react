@@ -18,6 +18,7 @@ function Home() {
   useEffect(() => {
     API.get("products/api/home/")
       .then((res) => {
+        console.log(res.data)
         setGetProducts(res.data)
       })
       .catch(err => console.log(err.response.data))
