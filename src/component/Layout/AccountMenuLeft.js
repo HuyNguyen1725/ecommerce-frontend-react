@@ -21,6 +21,11 @@ function AccountMenuLeft() {
                       <h4 className="panel-title"><a href={`/account/my_product/${user.user_id}`}>My product</a></h4>
                     </div>
                   </div>
+                  <div className="panel panel-default">
+                    <div className="panel-heading">
+                      <h4 className="panel-title"><a href="/account/add_blog">Add blog</a></h4>
+                    </div>
+                  </div>
                 </div>{/*/category-products*/}
               </div>
             </div>

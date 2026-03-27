@@ -40,32 +40,35 @@ function MenuLeft() {
     navigate("/productfilter")
   }
 
+  categories.map(cgr => console.log(cgr.brands))
+
   return (
     <div className="col-sm-3">
       <div className="left-sidebar">
         <h2>Category</h2>
         <div className="panel-group category-products" id="accordian">{/*category-productsr*/}
-          {categories.map(category => 
-            <div className="panel panel-default">
+          {categories.map(category => {
+            const collapseId = `cgrId-${category.id}`
+            return <div className="panel panel-default">
               <div className="panel-heading">
                 <h4 className="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordian" href={`#${category.name}`}>
+                  <a data-toggle="collapse" data-parent="#accordian" href={`#${collapseId}`}>
                     <span className="badge pull-right"><i className="fa fa-plus" /></span>
                     {category.name}
                   </a>
                 </h4>
               </div>
-              {category.brands.map(brand => 
-                <div id={category.name} className="panel-collapse collapse">
+              <div id={collapseId} className="panel-collapse collapse">
                   <div className="panel-body">
                     <ul>
-                      <li key={brand.id}><button id={brand.id} onClick={handleBrandFilter}>{brand.name} </button></li>
+                      {category.brands.map(brand => 
+                        <li key={brand.id}><button id={brand.id} onClick={handleBrandFilter}>{brand.name} </button></li>
+                      )}
                     </ul>
                   </div>
                 </div>
-              )}
             </div>
-          )}
+          })}
         </div>{/*/category-products*/}
         <div className="brands_products">{/*brands_products*/}
           <h2>Brands</h2>

@@ -11,6 +11,7 @@ import AddProduct from "./component/product/AddProduct";
 import MyProduct from "./component/product/MyProduct";
 import EditProduct from "./component/product/EditProduct";
 import ProductFilter from "./component/product/ProductFilter";
+import AddBlog from "./component/blog/AddBlog";
 import Home from "./component/Home";
 import Cart from "./component/account/Cart"
 import Checkout from "./component/account/Checkout";
@@ -62,6 +63,7 @@ function App() {
                         <Route path="/checkout" element={<Checkout />} />
                         <Route path="/wishlist" element={<Wishlist />} />
                         <Route path="/productfilter" element={<ProductFilter />} />
+                        <Route path="/account/add_blog" element={<AddBlog />} />
                     </Routes>
                     </div>
                 </div>
