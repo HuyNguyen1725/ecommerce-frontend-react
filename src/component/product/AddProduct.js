@@ -8,6 +8,8 @@ function AddProduct() {
     const [categories, setCategories] = useState([])
     const [category, setCategory] = useState("")
     const [brand, setBrand] = useState("")
+    const [categoryInput, setCategoryInput] = useState("")
+    const [brandInput, setBrandInput] = useState("")
     const [brands, setBrands] = useState([])
     const [files, setFiles] = useState([])
     const [sale, setSale] = useState("")
@@ -22,6 +24,22 @@ function AddProduct() {
     const [errors, setErrors] = useState("")
     const allowedExtension = ["jpg", "jpeg", "png", "gif"]
     const maxSize = 1 * 1024 * 1024
+
+    useEffect(() => {
+        API.get("products/api/categories/")
+        .then(res => 
+            setCategories(res.data)
+        )
+        .catch(err => console.log(err.respone.data))
+    }, [])
+
+    useEffect(() => {
+        API.get("products/api/brands/")
+        .then(res => 
+            setBrands(res.data)
+        )
+        .catch(err => console.log(err.respone.data))
+    }, [])
 
     function categoryOption() {
         return categories.map(obj => 
@@ -42,6 +60,14 @@ function AddProduct() {
     function handleBrand(e) {
         setBrand(e.target.value)
 
+    }
+
+    function handleCategoryInput(e) {
+        setCategoryInput(e.target.value)
+    }
+
+    function handleBrandInput(e) {
+        setBrandInput(e.target.value)
     }
 
     function handleFile(e) {
@@ -101,26 +127,18 @@ function AddProduct() {
                 }
             })
         }
-        if(brand.length === 0) {
+        if(brand === "" && brandInput === "") {
             errors.brand = "Vui lòng chọn brand!"
             flag = false
         }
 
-        if(category.length === 0) {
+        if(category === "" && categoryInput === "") {
             errors.category = "Vui lòng chọn category!"
             flag = false
         }
 
         if(status === 1 || status === "") {
             errors.status = "Vui lòng chọn status"
-            flag = false
-        }
-
-        if(sale === "") {
-            errors.sale = "Vui lòng chọn sale!"
-            flag = false
-        } else if(saleInput === "") {
-            errors.saleInput = "Vui lòng nhập giá sale!"
             flag = false
         }
 
@@ -148,9 +166,13 @@ function AddProduct() {
             let formData = new FormData()
             formData.append("author", Number(user.user_id))
             formData.append("productname", info.name)
-            formData.append("brand", brand)
+            if(brandInput === "") {
+                formData.append("brand", brand)  
+            } else formData.append("brand", brandInput)
             formData.append("price", info.price)
-            formData.append("category", category)
+            if(categoryInput === "") {
+                formData.append("category", category)
+            } else formData.append("category", categoryInput)
             formData.append("status", status)
             formData.append("sale", saleInput)
             formData.append("detail", detail)
@@ -173,6 +195,7 @@ function AddProduct() {
                     .then(res => {
                         user.access_token = res.data.access
                         localStorage.setItem("user", JSON.stringify(user))
+                        console.log(res.data.access)
                         API.post("products/api/products/", formData, {
                             headers: {
                                 Authorization: `Bearer ${user.access_token}`
@@ -181,7 +204,7 @@ function AddProduct() {
                         .then(res => {
                             alert("Tạo sản phẩm thành công!")
                         })
-                        .catch(err => console.log(err))
+                        .catch(err => console.log(err)) 
                     })
                     .catch(err => console.log(err))
                 } else console.log(err)
@@ -189,21 +212,7 @@ function AddProduct() {
         }
 
     }
-    useEffect(() => {
-        API.get("products/api/categories/")
-        .then(res => 
-            setCategories(res.data)
-        )
-        .catch(err => console.log(err.respone.data))
-    }, [])
-
-    useEffect(() => {
-        API.get("products/api/brands/")
-        .then(res => 
-            setBrands(res.data)
-        )
-        .catch(err => console.log(err.respone.data))
-    }, [])
+    
     return (
         <div className="col-sm-9">
             <FormErrors errors={errors}/>
@@ -212,15 +221,24 @@ function AddProduct() {
                 <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
                     <input value={info.name} onChange={handleInfo} name="name" placeholder="Name"/>
                     <input value={info.price} onChange={handleInfo} name="price" placeholder="Price"/>
-                    <input />
+                    {category === "" ?
+                    <input onChange={handleCategoryInput} value={categoryInput} name="CategoryText" placeholder="Category text"/>:
+                    null}
+                    {categoryInput === "" ? 
                     <select onChange={handleCategory} value={category}>
                         <option value={[]}>Please choose category</option>
                         {categoryOption()}
-                    </select>
+                    </select> : null
+                    }
+                    {brand === "" ?
+                    <input onChange={handleBrandInput} value={brandInput} name="BrandText" placeholder="Brand text"/>:
+                    null}
+                    {brandInput === "" ? 
                     <select onChange={handleBrand} value={brand}>
                         <option value={[]}>Please choose brand</option>
                         {brandOption()}
-                    </select>
+                    </select>:
+                    null}
                     <select onChange={handleStatus} value={status}>
                         <option value={""}>Please choose status</option>
                         <option value={0}>New</option>

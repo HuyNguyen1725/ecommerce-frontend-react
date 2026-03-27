@@ -8,6 +8,7 @@ function MyProduct() {
     let user = JSON.parse(localStorage.getItem("user")) || {}
     const [myProduct, setMyProduct] = useState([])
     let newProductList = [...myProduct] 
+    console.log(myProduct)
 
     useEffect(() => {
         API.get(`products/api/users/${user_id}/products/`, {

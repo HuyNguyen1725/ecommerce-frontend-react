@@ -84,7 +84,7 @@ function Home() {
             <div className="product-image-wrapper">
               <div className="single-products">
                 <div className="productinfo text-center">
-                  <img src={`https://api.huynguyen1725.com/media/products/${prd.image[0]}`} alt="" />
+                  <img src={`${process.env.REACT_APP_API_URL}media/products/${prd.image[0]}`} alt="" />
                   <h2>${prd.price}</h2>
                   <p>{prd.productname}</p>
                   <button onClick={handleAddToCart} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
@@ -149,7 +149,7 @@ function Home() {
                     <div className="product-image-wrapper">
                       <div className="single-products">
                         <div className="productinfo text-center">
-                          <img src={`${API}media/products/${prd.image[0]}`} alt="" />
+                          <img src={`${process.env.REACT_APP_API_URL}media/products/${prd.image[0]}`} alt="" />
                           <h2>${prd.price}</h2>
                           <p>{prd.productname}</p>
                           <a onClick={handleAddToCart} id={prd.id} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</a>
@@ -157,7 +157,7 @@ function Home() {
                       </div>
                     </div>
                   </div>
-                  } else return null
+                  } 
                 })}
               </div>
               <div className="item">	
@@ -175,7 +175,7 @@ function Home() {
                     </div>
                   </div>
                 </div>
-                  } else return null
+                  } 
                 })}
               </div>
             </div>

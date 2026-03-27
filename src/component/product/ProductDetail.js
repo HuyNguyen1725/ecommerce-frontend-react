@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import Carousel from "react-multi-carousel"
 import { useDispatch } from "react-redux"
 import { totalCheckoutCount } from "../../counterSlice"
+import newImg from "../../images/product-details/new.jpg"
 import { UserContext } from "../../UserContext"
 import "react-multi-carousel/lib/styles.css"
 
@@ -81,22 +82,22 @@ function ProductDetail() {
                 itemClass="carousel-item-padding-40-px"
                 >
                 <div className="item active">
-                  <img style={{width: "100px"}} src={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[1] : null}`} alt="product" />
-                </div>
-                <div className="item">
-                  <img  style={{width: "100px"}} src={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[2] : null}`} alt="product"/>
-                </div>
-                <div className="item">
                   <img style={{width: "100px"}} src={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[0] : null}`} alt="product" />
+                </div>
+                <div className="item">
+                  <img  style={{width: "100px"}} src={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[1] : null}`} alt="product"/>
+                </div>
+                <div className="item">
+                  <img style={{width: "100px"}} src={`${process.env.REACT_APP_API_URL}media/products/${Object.keys(getProduct).length > 0 ? getProduct.image[2] : null}`} alt="product" />
                 </div>
                 </Carousel>
           </div>
           <div className="col-sm-7">
             <div className="product-information">
-              <img src="images/product-details/new.jpg" className="newarrival" alt="product" />
+              <img src={newImg} className="newarrival" alt="product" />
               <h2>{getProduct.productname}</h2>
               <p>Web ID: {getProduct.id}</p>
-              <img src="images/product-details/rating.png" alt="product" />
+              {/* <img src="images/product-details/rating.png" alt="product" /> */}
               <span>
                 <span>US ${getProduct.price}</span>
                 <label>Quantity:</label>
@@ -109,7 +110,7 @@ function ProductDetail() {
               <p><b>Availability:</b> In Stock</p>
               <p><b>Condition:</b> New</p>
               <p><b>Brand:</b> E-SHOPPER</p>
-              <img src="images/product-details/share.png" className="share img-responsive" alt="product" />
+              {/* <img src={share} className="share img-responsive" alt="product" /> */}
             </div>
           </div>
         </div>

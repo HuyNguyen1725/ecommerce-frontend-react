@@ -44,7 +44,7 @@ function App() {
             <Header />
                 <div className="container">
                     <div className="row">
-                        {params1['pathname'].includes("home") ? <Slider /> : null}
+                        {params1['pathname'] === "/" ? <Slider /> : null}
                         {!params1['pathname'].includes("login") && 
                         !params1['pathname'].includes("cart") &&!params1['pathname'].includes("checkout") && 
                         (params1['pathname'].includes("account") ? <AccountMenuLeft /> : <MenuLeft />)}
@@ -56,7 +56,7 @@ function App() {
                         <Route path="/account/add_product" element={<AddProduct />} />
                         <Route path="/account/my_product/:user_id" element={<MyProduct />} />
                         <Route path="/account/edit_product/:id" element={<EditProduct />} />
-                        <Route path="/home" element={<Home />} />
+                        <Route path="/" element={<Home />} />
                         <Route path="/product_detail/:id" element={<ProductDetail />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/checkout" element={<Checkout />} />

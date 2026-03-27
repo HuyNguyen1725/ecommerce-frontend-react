@@ -88,7 +88,7 @@ function Header() {
             <div className="row">
               <div className="col-md-4 clearfix">
                 <div className="logo pull-left">
-                  <a href="/home"><img src={logo} alt="" /></a>
+                  <a href="/"><img src={logo} alt="" /></a>
                 </div>
                 <div className="btn-group pull-right clearfix">
                   <div className="btn-group">
@@ -173,7 +173,7 @@ function Header() {
                 </div>
                 <div className="mainmenu pull-left">
                   <ul className="nav navbar-nav collapse navbar-collapse">
-                    <li><a href="/home">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li className="dropdown"><button href="#">Shop<i className="fa fa-angle-down" /></button>
                       <ul role="menu" className="sub-menu">
                         <li><a href="/productfilter">Products</a></li>
