@@ -38,7 +38,7 @@ function Rate() {
         })
         .catch(err => {
           if (err.response.status == 401) {
-            API.post("api/token/refresh", {
+            API.post("users/api/token/refresh/", {
               refresh: user.refresh_token
             })
             .then(res => {
