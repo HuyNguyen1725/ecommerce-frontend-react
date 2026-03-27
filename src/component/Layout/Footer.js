@@ -29,7 +29,7 @@ function Footer() {
                       </div>
                     </button>
                     <p>Circle of Hands</p>
-                    <h2>24 DEC 2014</h2>
+                    <h2>24 DEC 2026</h2>
                   </div>
                 </div>
                 <div className="col-sm-3">
@@ -43,7 +43,7 @@ function Footer() {
                       </div>
                     </button>
                     <p>Circle of Hands</p>
-                    <h2>24 DEC 2014</h2>
+                    <h2>24 DEC 2026</h2>
                   </div>
                 </div>
                 <div className="col-sm-3">
@@ -57,7 +57,7 @@ function Footer() {
                       </div>
                     </button>
                     <p>Circle of Hands</p>
-                    <h2>24 DEC 2014</h2>
+                    <h2>24 DEC 2026</h2>
                   </div>
                 </div>
                 <div className="col-sm-3">
@@ -71,7 +71,7 @@ function Footer() {
                       </div>
                     </button>
                     <p>Circle of Hands</p>
-                    <h2>24 DEC 2014</h2>
+                    <h2>24 DEC 2026</h2>
                   </div>
                 </div>
               </div>
@@ -151,7 +151,7 @@ function Footer() {
         <div className="footer-bottom">
           <div className="container">
             <div className="row">
-              <p className="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+              <p className="pull-left">Copyright © 2026 E-SHOPPER Inc. All rights reserved.</p>
               <p className="pull-right">Designed by <span><a target="_blank" rel="noreferrer" href="http://www.themeum.com">Themeum</a></span></p>
             </div>
           </div>
