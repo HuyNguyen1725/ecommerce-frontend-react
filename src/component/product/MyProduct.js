@@ -51,11 +51,13 @@ function MyProduct() {
     }
 
     return (
+      <section id="myPrd_items">
         <div className="col-sm-9">
-        <div className="table-responsive cart_info">
+          <h2 className="title text-center">My Product</h2>
+        <div className="table-responsive myPrd_info">
           <table className="table table-condensed">
             <thead>
-              <tr className="cart_menu">
+              <tr className="myPrd_menu">
                 <td className="image">image</td>
                 <td className="description">name</td>
                 <td className="price">price</td>
@@ -65,16 +67,16 @@ function MyProduct() {
             <tbody>
               {myProduct.map(obj => 
                 <tr>
-                <td className="cart_product">
+                <td className="myPrd_product">
                   <a href><img style={{width: "70px"}} src={`${process.env.REACT_APP_API_URL}media/products/${obj.image[0]}`} alt="" /></a>
                 </td>
-                <td className="cart_description">
+                <td className="myPrd_description">
                   <h4><a href>{obj.productname}</a></h4>
                 </td>
-                <td className="cart_price">
+                <td className="myPrd_price">
                   <p>${obj.price}</p>
                 </td>
-                <td className="cart_total">
+                <td className="myPrd-action">
                   <a href={`/account/edit_product/${obj.id}`} className="btn btn-secondary btn-sm">edit</a>
                   <a onClick={handleDelete} className="btn btn-secondary btn-sm" id={obj.id}>delete</a>
                 </td>
@@ -84,6 +86,7 @@ function MyProduct() {
           </table>
         </div>
       </div>
+      </section>
     )
 }
 

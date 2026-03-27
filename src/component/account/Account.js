@@ -94,7 +94,6 @@ function Account() {
                 <FormErrors errors={errors}/>
                 <h2 className="title text-center">Update user</h2>
                 <div className="signup-form">{/*sign up form*/}
-                  <h2>User Update!</h2>
                   <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
                     <input type="text" name="user_name" value={info.user_name} onChange={handleInput} placeholder="Name" />
                     <input type="email" name="user_email" value={info.user_email} onChange={handleInput} readOnly placeholder="Email Address" />

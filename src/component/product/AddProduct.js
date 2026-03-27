@@ -216,7 +216,7 @@ function AddProduct() {
     return (
         <div className="col-sm-9">
             <FormErrors errors={errors}/>
-            <h2 className="create_prd_title">Create Product!</h2>
+            <h2 className="title text-center">Create Product</h2>
             <div className="add-product-form">
                 <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
                     <input value={info.name} onChange={handleInfo} name="name" placeholder="Name"/>

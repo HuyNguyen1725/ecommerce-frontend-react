@@ -78,6 +78,7 @@ function AddBlog() {
     }
     return (
         <div className="col-sm-9">
+            <h2 className="title text-center">Create blog</h2>
             <FormErrors errors={errors}/>
             <form onSubmit={handleSubmit} className="add-blog-form" method="POST" encType="multipart/form-data">
                 <input onChange={handleTitle} value={title} placeholder="title"/>
