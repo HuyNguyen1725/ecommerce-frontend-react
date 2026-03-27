@@ -128,7 +128,7 @@ function Home() {
                           <img src={`${process.env.REACT_APP_API_URL}media/products/${prds.image[0]}`} alt="" />
                           <h2>${prds.price}</h2>
                           <p>{prds.productname}</p>
-                          <button className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
+                          <button onClick={handleAddToCart} className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart" />Add to cart</button>
                           </div>
                         </div>
                       </div>
