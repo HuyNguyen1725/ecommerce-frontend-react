@@ -1,14 +1,16 @@
 import { useState, useEffect, useContext } from "react"
 import API from "../../API"
 import { UserContext } from "../../UserContext"
+import { totalCheckoutCount } from "../../counterSlice"
+import { useDispatch } from "react-redux"
 
 function Cart() {
-    const userCartLocal = localStorage.getItem("user_cart")
-    const userCartLc = JSON.parse(userCartLocal)
+    let userCartLc = JSON.parse(localStorage.getItem("user_cart"))
     
     const {setGetCart} = useContext(UserContext)
     const [userCart, setUserCart] = useState([])
     let newUserCart = [...userCart]
+    const dispatch = useDispatch()
 
     useEffect(() => {
       API.post("products/api/carts/products/", userCartLc)
@@ -20,30 +22,32 @@ function Cart() {
       })
     }, [setGetCart])
 
-    console.log(userCart)
 
     function cartSubTotal() {
       let result = 0
       userCart.map(prd => result += (prd.qty * prd.price))
       return result
     }
+    console.log(userCartLc)
 
     function handleQtyUp(e) {
       let totalQty = 0
       const prd_id = e.target.id
       if(userCartLc[prd_id]) {
         userCartLc[prd_id] += 1
-        localStorage.setItem("user_cart", JSON.stringify(userCartLc))
-      }
+      } else userCartLc[prd_id] = 1
+      localStorage.setItem("user_cart", JSON.stringify(userCartLc))
       newUserCart.map(prd => {
-        if(prd.id === prd_id) {
-          return prd.qty += 1
+        if(prd.id == prd_id) {
+          prd.qty += 1
         }
       })
       setUserCart(newUserCart)
       newUserCart.map(prd => totalQty += prd.qty)
       setGetCart(totalQty)
+      dispatch(totalCheckoutCount(totalQty))
     }
+
   
     function handleQtyDown(e) {
       let totalQty = 0
@@ -67,6 +71,7 @@ function Cart() {
       setUserCart(newUserCart)
       newUserCart.map(prd => totalQty += prd.qty)
       setGetCart(totalQty)
+      dispatch(totalCheckoutCount(totalQty))
     }
 
     function handleDeleteProduct(e) {
