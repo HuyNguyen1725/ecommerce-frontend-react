@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import API from "../../API"
 import FormErrors from "../../FormErrors"
 
-
 function AddProduct() {
     let user = JSON.parse(localStorage.getItem("user")) || {}
     const [categories, setCategories] = useState([])

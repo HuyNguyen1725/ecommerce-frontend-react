@@ -27,6 +27,31 @@ function EditProduct() {
     const allowedExtension = ["jpg", "jpeg", "png", "gif"]
     const maxSize = 1 * 1024 * 1024
 
+    useEffect(() => {
+        API.get("products/api/categories/")
+        .then(res => 
+            setCategories(res.data)
+        )
+        .catch(err => console.log(err.respone.data))
+    }, [])
+
+    useEffect(() => {
+        API.get(`products/api/products/${product_id}/`)
+        .then(res => {
+            setProductEdit(res.data)
+        })
+        .catch(err => console.log(err))
+    }, [])
+
+    
+    useEffect(() => {
+        API.get("products/api/brands/")
+        .then(res => 
+            setBrands(res.data)
+        )
+        .catch(err => console.log(err.respone.data))
+    }, [])
+
     function categoryOption() {
         return categories.map(obj => 
             <option value={obj.id} key={obj.id}>{obj.name}</option>
@@ -179,30 +204,6 @@ function EditProduct() {
         }
     }
 
-    useEffect(() => {
-        API.get("products/api/categories/")
-        .then(res => 
-            setCategories(res.data)
-        )
-        .catch(err => console.log(err.respone.data))
-    }, [])
-
-    useEffect(() => {
-        API.get(`products/api/products/${product_id}/`)
-        .then(res => {
-            setProductEdit(res.data)
-        })
-        .catch(err => console.log(err))
-    }, [])
-
-    
-    useEffect(() => {
-        API.get("products/api/brands/")
-        .then(res => 
-            setBrands(res.data)
-        )
-        .catch(err => console.log(err.respone.data))
-    }, [])
     return (
         <div className="col-sm-9">
             <FormErrors errors={errors}/>

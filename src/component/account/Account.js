@@ -15,7 +15,6 @@ function Account() {
         user_name: user.username,
         user_email: user.user_email,
     })
-    
 
     const [avatar, setAvatar] = useState("")
 
@@ -67,7 +66,7 @@ function Account() {
         if(!flag) {
             setErrors(errors)
         } else {
-            setErrors({})   
+            setErrors({})
             const formData = new FormData()
             formData.append("username", info.user_name)
             formData.append("password", info.user_password)
@@ -96,7 +95,7 @@ function Account() {
                 <div className="signup-form">{/*sign up form*/}
                   <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
                     <input type="text" name="user_name" value={info.user_name} onChange={handleInput} placeholder="Name" />
-                    <input type="email" name="user_email" value={info.user_email} onChange={handleInput} readOnly placeholder="Email Address" />
+                    <input type="email" name="user_email" value={info.user_email} readOnly placeholder="Email Address" />
                     <input type="text" name="user_password" value={info.user_password} onChange={handleInput} placeholder="Password" />
                     <input type="text" value={info.user_confirm_password} onChange={handleConfirmPassword} placeholder="Confirm Password" />
                     <input type="file" onChange={handleFile}/>
