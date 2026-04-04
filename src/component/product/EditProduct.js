@@ -111,6 +111,30 @@ function EditProduct() {
         setDetail(e.target.value)
     }
 
+    function handleCheckbox(e) {
+        const checked = e.target.checked
+        const img = e.target.id
+        if(checked) {
+            setImageDelete(state => ([
+                ...state,
+                img
+            ]))
+        } else {
+            setImageDelete(imageDelete.filter(imge => imge !== img))
+        }
+    }
+
+    function checkboxDelete() {
+        if(Object.keys(productEdit).length > 0) {
+            return productEdit["image"].map(img => 
+            <div className="me-2">
+                <img className="mb-2" style={{width: "50px"}} src={`${process.env.REACT_APP_API_URL}media/products/${img}`}/>
+                <input onChange={handleCheckbox} className="form-check-input" id={img} type="checkbox"/>
+            </div>
+        )
+        }
+    }
+
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -178,30 +202,6 @@ function EditProduct() {
             })
         }
 
-    }
-
-    function handleCheckbox(e) {
-        const checked = e.target.checked
-        const img = e.target.id
-        if(checked) {
-            setImageDelete(state => ([
-                ...state,
-                img
-            ]))
-        } else {
-            setImageDelete(imageDelete.filter(imge => imge !== img))
-        }
-    }
-
-    function checkboxDelete() {
-        if(Object.keys(productEdit).length > 0) {
-            return productEdit["image"].map(img => 
-            <div className="me-2">
-                <img className="mb-2" style={{width: "50px"}} src={`${process.env.REACT_APP_API_URL}media/products/${img}`}/>
-                <input onChange={handleCheckbox} className="form-check-input" id={img} type="checkbox"/>
-            </div>
-        )
-        }
     }
 
     return (
