@@ -49,7 +49,7 @@ function Header() {
     e.preventDefault()
     API.get(`products/api/products/?productname=${searchInput}`)
     .then(res => {
-      setGetProducts(res.data)
+      setGetProducts(res.data.results)
       navigate("/productfilter")
     })
     .catch(err => console.log(err))
