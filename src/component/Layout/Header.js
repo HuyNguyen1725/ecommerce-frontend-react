@@ -8,14 +8,9 @@ import { useNavigate } from "react-router-dom"
 
 
 function Header() {
-  const userLocal = localStorage.getItem("user")
-  const user = JSON.parse(userLocal) || {}
-
-  const userCartLocal = localStorage.getItem("user_cart")
-  const userCartLc = JSON.parse(userCartLocal) || {}
-
-  const wishListLocal = localStorage.getItem("wishlist")
-  const wishListLc = JSON.parse(wishListLocal) || []
+  const user = JSON.parse(localStorage.getItem("user")) || {}
+  const userCartLc = JSON.parse(localStorage.getItem("user_cart")) || {}
+  let wishListLc = JSON.parse(localStorage.getItem("wishlist")) || []
 
   const { getCart, setGetCart, getWishList, setGetWishList, setGetProducts } = useContext(UserContext)
   const [searchInput, setSearchInput] = useState("")

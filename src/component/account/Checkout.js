@@ -6,13 +6,11 @@ import { useDispatch } from "react-redux";
 import { totalCheckoutCount } from "../../counterSlice";
 
 function Checkout() {
-    const userLocal = localStorage.getItem("user")
-    const user = JSON.parse(userLocal) || {}
-    const userCartLocal = localStorage.getItem("user_cart")
-    const userCartLc = JSON.parse(userCartLocal) || {}
+    const user = JSON.parse(localStorage.getItem("user")) || {}
+    const userCartLc = JSON.parse(localStorage.getItem("user_cart")) || {}
 
     const [userCart, setUserCart] = useState([])
-    const { getCart, setGetCart } = useContext(UserContext)
+    const { setGetCart } = useContext(UserContext)
     let newUserCart = [...userCart]
 
     const dispatch = useDispatch()

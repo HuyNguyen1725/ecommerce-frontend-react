@@ -7,7 +7,7 @@ function MyProduct() {
     const user_id = params.user_id
     let user = JSON.parse(localStorage.getItem("user")) || {}
     const [myProduct, setMyProduct] = useState([])
-    let newProductList = [...myProduct] 
+    let newProductList = [...myProduct]
     console.log(myProduct)
 
     useEffect(() => {

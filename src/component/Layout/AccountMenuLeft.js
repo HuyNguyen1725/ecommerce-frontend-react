@@ -1,6 +1,5 @@
 function AccountMenuLeft() {
-    const userLocal = localStorage.getItem("user")
-    const user = JSON.parse(userLocal)
+    const user = JSON.parse(localStorage.getItem("user")) || {}
     return (
         <div className="col-sm-3">
               <div className="left-sidebar">

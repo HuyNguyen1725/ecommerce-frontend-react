@@ -4,8 +4,7 @@ import FormErrors from "../../FormErrors"
 
 
 function Account() {
-    const userLocal = localStorage.getItem("user")
-    const user = JSON.parse(userLocal) || {}
+    const user = JSON.parse(localStorage.getItem("user")) || {}
     const [errors, setErrors] = useState({})
 
     const allowedExtension = ["jpg", "jpeg", "png", "gif"]

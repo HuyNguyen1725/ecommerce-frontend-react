@@ -58,7 +58,6 @@ function AddProduct() {
 
     function handleBrand(e) {
         setBrand(e.target.value)
-
     }
 
     function handleCategoryInput(e) {

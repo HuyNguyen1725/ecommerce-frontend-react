@@ -31,13 +31,6 @@ function BlogDetail() {
                 <li><i className="fa fa-clock-o" /> {blogDetail.time}</li>
                 <li><i className="fa fa-calendar" /> {blogDetail.date}</li>
               </ul>
-              {/* <span>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-half-o"></i>
-								</span> */}
             </div>
             <a href>
               <img src={`${process.env.REACT_APP_API_URL}${blogDetail.image}`} alt="" />
