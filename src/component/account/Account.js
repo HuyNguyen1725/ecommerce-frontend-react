@@ -13,6 +13,7 @@ function Account() {
     const [info, setInfo] = useState({
         user_name: user.username,
         user_email: user.user_email,
+        user_password: ""
     })
 
     const [avatar, setAvatar] = useState("")
@@ -41,10 +42,7 @@ function Account() {
         e.preventDefault()
         let errors = {}
         let flag = true
-        if(info.user_name === user.user_name) {
-            errors.user_name = "Trùng tên cũ!"
-            flag = false
-        }
+        
         if(info.user_password !== "") {
             if(info.user_confirm_password !== info.user_password) {
                 errors.password = "Mật khẩu không khớp!"
@@ -82,7 +80,28 @@ function Account() {
             setInfo(res.data)
             console.log(res.data)
             })
-            .catch(err => console.log(err.response.data))
+            .catch(err => {
+                if(err.response.status == 401) {
+                    API.post("/users/api/token/refresh/", {
+                        refresh: user.refresh_token
+                    })
+                    .then(res => {
+                        user.access_token = res.data.access
+                        localStorage.setItem("user", JSON.stringify(user))
+                        API.patch(`users/api/users/${user.user_id}`, formData, {
+                            headers: {
+                                Authorization: `Bearer ${user.access_token}`
+                            }
+                        })
+                        .then(res => {
+                            user.user_name = res.data.username
+                            user.avatar = res.data.avatar
+                        })
+                        .catch(err => console.log(err))
+                    })
+                    .catch(err => console.log(err))
+                } else console.log(err)
+            })
         }
     }
 

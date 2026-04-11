@@ -47,9 +47,9 @@ function Login() {
                     "access_token": res.data.access_token,
                     "refresh_token": res.data.refresh_token,
                     "user_id": res.data.user_id,
-                    "username": res.data.username,//để hiển thị ở trang account chỉnh sửa
-                    "avatar": res.data.avatar,//để hiển thị ở trang blog
-                    "user_email": res.data.user_email //mục đích email là để hiển thị trang account
+                    "username": res.data.username,
+                    "avatar": res.data.avatar,
+                    "user_email": res.data.user_email
                    }
                   localStorage.setItem("user", JSON.stringify(user))
                   window.location.href = "/blog"
@@ -58,7 +58,6 @@ function Login() {
         }
     } 
     
-
     return (
         
       <section id="form">{/*form*/}
