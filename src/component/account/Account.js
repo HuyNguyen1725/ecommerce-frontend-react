@@ -13,7 +13,8 @@ function Account() {
     const [info, setInfo] = useState({
         user_name: user.username,
         user_email: user.user_email,
-        user_password: ""
+        user_password: "",
+        user_confirm_password: "",
     })
 
     const [avatar, setAvatar] = useState("")
@@ -68,7 +69,6 @@ function Account() {
             formData.append("username", info.user_name)
             formData.append("password", info.user_password)
             formData.append("avatar", avatar)
-            console.log(formData)
             API.patch(`users/api/users/${user.user_id}/`, formData,
                 {
                     headers: {
@@ -88,14 +88,15 @@ function Account() {
                     .then(res => {
                         user.access_token = res.data.access
                         localStorage.setItem("user", JSON.stringify(user))
-                        API.patch(`users/api/users/${user.user_id}`, formData, {
+                        API.patch(`users/api/users/${user.user_id}/`, formData, {
                             headers: {
                                 Authorization: `Bearer ${user.access_token}`
                             }
                         })
                         .then(res => {
-                            user.user_name = res.data.username
+                            user.username = res.data.username
                             user.avatar = res.data.avatar
+                            localStorage.setItem("user", JSON.stringify(user))
                         })
                         .catch(err => console.log(err))
                     })

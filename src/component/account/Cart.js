@@ -5,7 +5,7 @@ import { totalCheckoutCount } from "../../counterSlice"
 import { useDispatch } from "react-redux"
 
 function Cart() {
-    let userCartLc = JSON.parse(localStorage.getItem("user_cart"))
+    let userCartLc = JSON.parse(localStorage.getItem("user_cart")) || {}
     
     const {setGetCart} = useContext(UserContext)
     const [userCart, setUserCart] = useState([])
